@@ -59,7 +59,7 @@ def get_database(database_name: Optional[str] = None):
     
     # Use provided name or fall back to environment variable
     if database_name is None:
-        database_name = os.getenv("DEFAULT_DATABASE_NAME", "cucbot_db")
+        database_name = os.getenv("GRADE3_DATABASE_NAME", "grade3")
     
     # Cache database instances
     if database_name not in db_manager._databases:
@@ -68,22 +68,32 @@ def get_database(database_name: Optional[str] = None):
     return db_manager._databases[database_name]
 
 # Convenience functions for specific databases
-def get_main_database():
-    """Get main application database"""
-    main_db_name = os.getenv("MAIN_DATABASE_NAME", "cucbot_main")
-    return get_database(main_db_name)
+def get_auth_database():
+    """Get authentication database"""
+    auth_db_name = os.getenv("AUTH_DATABASE_NAME", "auth_db")
+    return get_database(auth_db_name)
 
-def get_user_database():
-    """Get user data database"""
-    user_db_name = os.getenv("USER_DATABASE_NAME", "cucbot_users")
-    return get_database(user_db_name)
+def get_english_database():
+    """Get English grammar database"""
+    english_db_name = os.getenv("ENGLISH_DATABASE_NAME", "english_grammar")
+    return get_database(english_db_name)
 
-def get_analytics_database():
-    """Get analytics database"""
-    analytics_db_name = os.getenv("ANALYTICS_DATABASE_NAME", "cucbot_analytics")
-    return get_database(analytics_db_name)
+def get_essays_database():
+    """Get essays management database"""
+    essays_db_name = os.getenv("ESSAYS_MANAGEMENT_DATABASE_NAME", "essays_management")
+    return get_database(essays_db_name)
 
-def get_content_database():
-    """Get content/educational database"""
-    content_db_name = os.getenv("CONTENT_DATABASE_NAME", "cucbot_content")
-    return get_database(content_db_name)
+def get_flashcard_database():
+    """Get flashcard database"""
+    flashcard_db_name = os.getenv("FLASHCARD_DATABASE_NAME", "flashcard")
+    return get_database(flashcard_db_name)
+
+def get_flash_web_database():
+    """Get flash web database"""
+    flash_web_db_name = os.getenv("FLASH_WEB_DATABASE_NAME", "flash_web")
+    return get_database(flash_web_db_name)
+
+def get_grade3_database():
+    """Get grade 3 educational database"""
+    grade3_db_name = os.getenv("GRADE3_DATABASE_NAME", "grade3")
+    return get_database(grade3_db_name)

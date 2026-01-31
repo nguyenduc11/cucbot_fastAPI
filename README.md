@@ -106,3 +106,6 @@
  
  - `requirements.txt` is present but not required for the standard `uv` workflow. Prefer `uv sync` over manual `pip install`.
  - If you change dependencies, update `pyproject.toml` and regenerate the lockfile with `uv lock` (or rerun `uv sync` as appropriate).
+
+
+uv sync && uv run uvicorn app.main:app --host 0.0.0.0 --port $PORT
