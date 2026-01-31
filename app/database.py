@@ -88,10 +88,10 @@ def get_flashcard_database():
     flashcard_db_name = os.getenv("FLASHCARD_DATABASE_NAME", "flashcard")
     return get_database(flashcard_db_name)
 
-def get_flash_web_database():
-    """Get flash web database"""
-    flash_web_db_name = os.getenv("FLASH_WEB_DATABASE_NAME", "flash_web")
-    return get_database(flash_web_db_name)
+def get_flask_web_database():
+    """Get flask web database"""
+    flask_web_db_name = os.getenv("FLASK_WEB_DATABASE_NAME", "flask_web")
+    return get_database(flask_web_db_name)
 
 def get_grade3_database():
     """Get grade 3 educational database"""
