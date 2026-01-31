@@ -38,9 +38,9 @@ async def get_teacher_notes(
         # Convert sort order
         sort_order = 1 if order == "asc" else -1
         
-        # Execute query
-        cursor = db.teacher_notes.find(query).sort(sort_by, sort_order)
-        notes = await cursor.to_list(length=None)
+        # Execute query - limit to 10 most recent notes
+        cursor = db.teacher_notes.find(query).sort(sort_by, sort_order).limit(10)
+        notes = await cursor.to_list(length=10)
         
         # Convert documents using helper function
         converted_notes = [teacher_note_helper(note) for note in notes]
