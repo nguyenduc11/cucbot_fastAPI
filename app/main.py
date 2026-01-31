@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from .database import connect_to_mongo, close_mongo_connection, get_database
 from .routers import teacher_notes
@@ -12,6 +13,20 @@ async def lifespan(app: FastAPI):
     await close_mongo_connection()
 
 app = FastAPI(lifespan=lifespan)
+
+# Add CORS middleware to allow cross-origin requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://cucbot.vercel.app",  # Your production Vercel domain
+        "https://*.vercel.app",       # Vercel preview deployments
+        "http://localhost:3000",      # Local development
+        "http://127.0.0.1:3000",      # Alternative localhost
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 # Include routers
 app.include_router(teacher_notes.router)
