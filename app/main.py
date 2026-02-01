@@ -20,6 +20,7 @@ app.add_middleware(
     allow_origins=[
         "https://cucbot.vercel.app",  # Your production Vercel domain
         "https://*.vercel.app",       # Vercel preview deployments
+        "https://cucbotapi.fly.dev",  # Your Fly.io FastAPI domain
         "http://localhost:3000",      # Local development
         "http://127.0.0.1:3000",      # Alternative localhost
     ],
