@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from .database import connect_to_mongo, close_mongo_connection, get_database
-from .routers import teacher_notes
+from .routers import teacher_notes, father_notes
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -31,6 +31,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(teacher_notes.router)
+app.include_router(father_notes.router)
 
 @app.get("/")
 def read_root():
